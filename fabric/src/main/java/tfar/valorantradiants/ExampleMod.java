@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package tfar.valorantradiants;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -12,7 +12,7 @@ public class ExampleMod implements ModInitializer {
         // project.
 
         // Use Fabric to bootstrap the Common mod.
-        CommonClass.LOG.info("Hello Fabric world!");
-        CommonClass.init();
+        ValorantRadiants.LOG.info("Hello Fabric world!");
+        ValorantRadiants.init();
     }
 }
