@@ -1,5 +1,6 @@
 package tfar.valorantradiants;
 
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,4 +20,9 @@ public class ValorantRadiants {
     public static void init() {
 
     }
+
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID,path);
+    }
+
 }
