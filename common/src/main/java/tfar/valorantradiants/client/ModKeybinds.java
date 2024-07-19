@@ -3,6 +3,10 @@ package tfar.valorantradiants.client;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import org.lwjgl.glfw.GLFW;
+import tfar.valorantradiants.ability.Abilities;
+import tfar.valorantradiants.ability.Ability;
+import tfar.valorantradiants.network.C2SKeybindPacket;
+import tfar.valorantradiants.platform.Services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +14,14 @@ import java.util.List;
 public class ModKeybinds {
 
     public static List<ModKeybinding> keyMappingList = new ArrayList<>();
-    public static final ModKeybinding WALL = register(GLFW.GLFW_KEY_KP_0,"Wall", () -> sendKey(0));
-    public static final ModKeybinding BLIND = register(GLFW.GLFW_KEY_KP_1,"Blind", () -> sendKey(1));
-    public static final ModKeybinding MOLLY = register(GLFW.GLFW_KEY_KP_2,"Molly", () -> sendKey(2));
-    public static final ModKeybinding RUN_IT_BACK = register(GLFW.GLFW_KEY_KP_3,"Run It Back", () -> sendKey(3));
+    public static final ModKeybinding WALL = register(GLFW.GLFW_KEY_R,"Wall", () -> sendKey(Abilities.WALL));
+    public static final ModKeybinding BLIND = register(GLFW.GLFW_KEY_KP_1,"Blind", () -> sendKey(null));
+    public static final ModKeybinding MOLLY = register(GLFW.GLFW_KEY_KP_2,"Molly", () -> sendKey(null));
+    public static final ModKeybinding RUN_IT_BACK = register(GLFW.GLFW_KEY_KP_3,"Run It Back", () -> sendKey(null));
 
 
-    private static void sendKey(String s) {
+    private static void sendKey(Ability ability) {
+        Services.PLATFORM.sendToServer(new C2SKeybindPacket(ability.name()));
     }
 
     public static class ModKeybinding extends KeyMapping {

@@ -12,6 +12,7 @@ import net.minecraftforge.registries.RegisterEvent;
 import org.apache.commons.lang3.tuple.Pair;
 import tfar.valorantradiants.client.ModClient;
 import tfar.valorantradiants.client.ModClientForge;
+import tfar.valorantradiants.datagen.ModDatagen;
 import tfar.valorantradiants.network.PacketHandler;
 
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class ValorantRadiantsForge {
         // project.
         bus.addListener(this::register);
         bus.addListener(this::setup);
+        bus.addListener(ModDatagen::gather);
         if (FMLEnvironment.dist.isClient()) {
             ModClientForge.init(bus);
         }

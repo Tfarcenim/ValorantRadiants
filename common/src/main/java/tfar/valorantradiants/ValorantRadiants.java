@@ -1,8 +1,12 @@
 package tfar.valorantradiants;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tfar.valorantradiants.init.ModItems;
+import tfar.valorantradiants.platform.Services;
 
 // This class is part of the common project meaning it is shared between all supported loaders. Code written here can only
 // import and access the vanilla codebase, libraries used by vanilla, and optionally third party libraries that provide
@@ -18,7 +22,7 @@ public class ValorantRadiants {
     // write the majority of your code here and load it from your loader specific projects. This example has some
     // code that gets invoked by the entry point of the loader specific projects.
     public static void init() {
-
+        Services.PLATFORM.registerAll(ModItems.class, BuiltInRegistries.ITEM, Item.class);
     }
 
     public static ResourceLocation id(String path) {
